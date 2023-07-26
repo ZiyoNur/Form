@@ -1,21 +1,38 @@
 import { useRef, useState } from "react";
+import useInput from "../hooks/use-input";
 
 const BasicForm = (props) => {
-  const [enteredName, setEnteredName] = useState('')
-  const [enteredLastName, setEnteredLastName] = useState('');
-  const [enteredEmail, setEnteredEmail] = useState('');
+  // const [enteredName, setEnteredName] = useState('');
+  // const [enteredLastName, setEnteredLastName] = useState('');
+  // const [enteredEmail, setEnteredEmail] = useState('');
 
-  const nameChangeHandler = e => {
-    setEnteredName(e.target.value);
-  };
+  const {
+    value: enteredName,
+    valueChangeHandler: nameChangeHandler,
+    reset: resetName,
+  } = useInput(value => value.trim() !== '');
+  const {
+    value: enteredLastName,
+    valueChangeHandler: lastNameChangeHandler,
+    reset: resetLastName,
+  } = useInput(value => value.trim() !== '');
+  const {
+    value: enteredEmail,
+    valueChangeHandler: emailChangeHandler,
+    reset: resetEmail,
+  } = useInput(value => value.trim() !== '');
 
-  const lastNameChangeHandler = e => {
-    setEnteredLastName(e.target.value);
-  };
+  // const nameChangeHandler = e => {
+  //   setEnteredName(e.target.value);
+  // };
 
-  const emailChangeHandler = e => {
-    setEnteredEmail(e.target.value);
-  };
+  // const lastNameChangeHandler = e => {
+  //   setEnteredLastName(e.target.value);
+  // };
+
+  // const emailChangeHandler = e => {
+  //   setEnteredEmail(e.target.value);
+  // };
 
 
   const submitHandler = e => {
@@ -30,9 +47,13 @@ const BasicForm = (props) => {
     console.log(form);
 
     // Clear inputs
-    setEnteredName('');
-    setEnteredLastName('');
-    setEnteredEmail('');
+    // setEnteredName('');
+    // setEnteredLastName('');
+    // setEnteredEmail('');
+
+    resetName();
+    resetLastName();
+    resetEmail();
   };
 
   return (
