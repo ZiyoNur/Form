@@ -26,6 +26,7 @@ const BasicForm = (props) => {
         enteredLastName,
         enteredEmail
       };
+      
     console.log(form);
 
     // Clear inputs
